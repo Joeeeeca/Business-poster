@@ -87,3 +87,13 @@ document.addEventListener("touchend", (event) => {
         }
     }
 });
+
+// Button click event listener
+const btn = document.querySelector('.btn');  // Make sure the button has a class "btn"
+if (btn) {
+    btn.addEventListener("click", () => {
+        console.log("Button clicked!");
+    });
+} else {
+    console.log("Button with class .btn not found.");
+}
