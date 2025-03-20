@@ -20,7 +20,7 @@ window.addEventListener("resize", updateSectionHeights);
 function scrollToSection(index) {
     if (index >= 0 && index < sections.length) {
         isScrolling = true;
-        
+
         console.log(`Before scrolling to section ${index}:`, sections[index].offsetHeight);
 
         window.scrollTo({
