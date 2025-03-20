@@ -1,0 +1,385 @@
+html, body {
+    scroll-behavior: auto;
+    overflow:hidden;
+    box-sizing: border-box;
+}
+
+section {
+    overflow: hidden; /* Optional: Prevent content overflow */
+    position: relative;
+    background-color: #d6d5d5;
+    min-height: 100vh; /* Ensures sections are at least 100vh, but grow with content */
+}
+
+
+
+
+
+
+
+.hero {
+    background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/Home_scroll_picture1.jpg') center/cover no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+/* Ensure the text container stays readable */
+.hero .container {
+    max-width: 800px; /* Prevents text from stretching too wide */
+    width: 90%; /* Ensures it scales on smaller screens */
+}
+
+/* Responsive typography */
+h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem); /* Adjusts size dynamically */
+    font-weight: 700;
+    color: white;
+}
+
+h2 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: lightgray;
+    font-weight: 300;
+}
+
+p {
+    font-size: clamp(1rem, 3vw, 1.5rem); /* Adjust the values as needed */
+    color: #fff; /* Keep the text color consistent */
+}
+
+/* Button responsiveness */
+.btn {
+    background-color: #1E3A8A;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease-in-out;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+
+.btn:hover {
+    background-color: #303075;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 20px;
+        height: auto;
+    }
+
+    .hero .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* About Section */
+.about {
+    background: linear-gradient(rgba(4,9,30,0.8), rgba(4,9,30,1)),  
+                url('images/background-image-backup.jpg') center/cover no-repeat;
+    position: relative;
+    min-height:100vh;
+   height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Responsive Text Width */
+.about-text {
+    max-width: 800px; /* Prevents text from stretching too wide */
+    width: 90%;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Image Container */
+.about-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+/* Image Wrapper */
+.about-img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Apply box-shadow to the image only */
+.about-img {
+    width: 275px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* On hover, only scale the image and shadow, not the wrapper */
+.about-img-wrapper:hover .about-img {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.6); /* Stronger glow */
+}
+
+.about-img-wrapper:first-child .about-img {
+    object-position: top;
+}
+
+/* Creating the border lines */
+.about-img-wrapper::before,
+.about-img-wrapper::after {
+    content: "";
+    position: absolute;
+    background-color: #fff; /* White lines */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Horizontal lines (top and bottom) */
+.about-img-wrapper::before {
+    width: 90%; 
+    height: 2px; /* Thickness */
+    top: 0; /* Position at the top */
+}
+
+.about-img-wrapper::after {
+    width: 90%;
+    height: 2px;
+    bottom: 0; /* Position at the bottom */
+}
+
+/* Vertical lines (left and right) */
+.about-img-wrapper .border-left,
+.about-img-wrapper .border-right {
+    position: absolute;
+    width: 2px; /* Thickness */
+    height: 90%;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-img-wrapper .border-left {
+    left: 0;
+}
+
+.about-img-wrapper .border-right {
+    right: 0;
+}
+
+/* ✅ Responsive Tweaks */
+@media (max-width: 768px) {
+    .about {
+        padding:120px 20px 30px 20px;
+    }
+
+    /* Stack images vertically */
+    .about-images {
+        height: auto; /* Remove fixed height */
+        padding-bottom: 100px; /* Add space at the bottom for scrolling */
+    }
+
+    /* Reduce text padding */
+    .about-text {
+        width: 95%;
+        padding: 0;
+    }
+
+    /* Make images full width */
+    .about-img {
+        max-width: 90%;
+    }
+
+    /* Remove excessive borders on small screens */
+    .about-img-wrapper::before,
+    .about-img-wrapper::after,
+    .about-img-wrapper .border-left,
+    .about-img-wrapper .border-right {
+        display: none;
+    }
+}
+
+
+
+.services {
+    background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/My_lessons_picture.jpg') center/cover no-repeat;
+    position:relative;
+    }
+.contact {
+    background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/contact_picture.jpg') center/cover no-repeat;
+    position:relative;
+    }
+
+
+.card {
+    width:18rem;
+    margin-right: 0; /* Remove margin */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add a subtle shadow */
+    border-radius: 12px; /* Smooth rounded corners */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift the card on hover */
+}
+
+.card-title {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+.card-text {
+    color:#000;
+}
+
+.btn-primary {
+    background-color: #f04e30; /* Nice warm color */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #c03e24;
+}
+
+.testimonial {
+    color: #333;
+    padding: 40px 20px;
+    width: 45%; /* Full-width */
+    margin-top: 30px;
+    border: 1px solid white;
+    border-radius:25px;
+}
+
+.blockquote {
+   /* Adjusting the clamp range for smaller text */
+    font-style: italic;
+    max-width: 800px; /* Stops it from stretching too wide */
+    margin: 0 auto; /* Center the text */
+}
+
+.blockquote p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+.blockquote-footer {
+    font-size: 1rem;
+    color: #777;
+}
+
+@media (max-width:992px) {
+    .card {
+        width:12rem;
+    }
+    .testimonial {
+        padding:20px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        width: 80%;
+    }
+    .blockquote {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .card {
+        padding: 10px !important;
+    }
+
+    .card-body {
+        padding:10px 0;
+    }
+
+    .btn {
+        padding:5px 10px;
+    }
+}
+
+
+.contact {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 60px 20px;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.15); /* Light transparency */
+    backdrop-filter: blur(10px); /* Subtle blur effect */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Softer shadow */
+    max-width: 600px;
+    width: 100%;
+}
+
+input,
+textarea {
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3); /* Light transparency */
+    color: #fff; /* White text */
+    transition: all 0.3s ease-in-out;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Light text for contrast */
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid #007bff;
+    outline: none;
+}
+button {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05); /* Slight enlargement */
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
