@@ -35,24 +35,41 @@ function scrollToSection(index) {
     }
 }
 
+// Mouse wheel scroll
 document.addEventListener("wheel", (event) => {
     if (isScrolling) return;
 
-    // Log the current window height before scrolling
     console.log("Current window innerHeight:", window.innerHeight);
 
-    if (event.deltaY > 0) {
-        // Scroll Down
-        if (currentIndex < sections.length - 1) {
-            currentIndex++;
-            scrollToSection(currentIndex);
-        }
+    if (event.deltaY > 0 && currentIndex < sections.length - 1) {
+        currentIndex++;
+        scrollToSection(currentIndex);
     } 
-    else if (event.deltaY < 0) {
-        // Scroll Up
-        if (currentIndex > 0) {
+    else if (event.deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+        scrollToSection(currentIndex);
+    }
+});
+
+// Touch event handling for mobile
+let startY = 0;
+let endY = 0;
+
+document.addEventListener("touchstart", (event) => {
+    startY = event.touches[0].clientY;
+});
+
+document.addEventListener("touchend", (event) => {
+    endY = event.changedTouches[0].clientY;
+    let deltaY = startY - endY;
+
+    if (Math.abs(deltaY) > 50) { // Minimum swipe distance
+        if (deltaY > 0 && currentIndex < sections.length - 1) {
+            currentIndex++;
+            scrollToSection(currentIndex); // Swipe up
+        } else if (deltaY < 0 && currentIndex > 0) {
             currentIndex--;
-            scrollToSection(currentIndex);
+            scrollToSection(currentIndex); // Swipe down
         }
     }
 });
@@ -60,26 +77,4 @@ document.addEventListener("wheel", (event) => {
 // Debugging the viewport height during scroll
 window.addEventListener("resize", () => {
     console.log("Window inner height (on resize):", window.innerHeight);
-});
-
-document.addEventListener("wheel", (event) => {
-    if (isScrolling) return;
-
-    // Log the current window height before scrolling
-    console.log("Current window innerHeight:", window.innerHeight);
-
-    if (event.deltaY > 0) {
-        // Scroll Down
-        if (currentIndex < sections.length - 1) {
-            currentIndex++;
-            scrollToSection(currentIndex);
-        }
-    } 
-    else if (event.deltaY < 0) {
-        // Scroll Up
-        if (currentIndex > 0) {
-            currentIndex--;
-            scrollToSection(currentIndex);
-        }
-    }
 });
