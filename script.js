@@ -59,17 +59,25 @@ window.addEventListener("resize", () => {
 // Touch event handling for mobile (Swipe Up/Down)
 document.addEventListener("touchstart", (event) => {
     startY = event.touches[0].clientY;
+    console.log("Touchstart - startY:", startY); // Log startY value
 });
 
 document.addEventListener("touchend", (event) => {
     endY = event.changedTouches[0].clientY;
+    console.log("Touchend - endY:", endY); // Log endY value
+
     let deltaY = startY - endY;
+    console.log("Swipe deltaY:", deltaY); // Log the deltaY (distance between start and end)
 
     if (Math.abs(deltaY) > 50 && !isScrolling) { // Minimum swipe distance to prevent accidental triggers
         if (deltaY > 0 && currentIndex < sections.length - 1) {
+            console.log("Swipe Up (Scroll Down)"); // Log swipe up action
             scrollToSection(++currentIndex); // Swipe up (scroll down)
         } else if (deltaY < 0 && currentIndex > 0) {
+            console.log("Swipe Down (Scroll Up)"); // Log swipe down action
             scrollToSection(--currentIndex); // Swipe down (scroll up)
         }
+    } else {
+        console.log("Swipe distance too short, no scroll triggered.");
     }
 });
