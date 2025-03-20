@@ -56,23 +56,20 @@ window.addEventListener("resize", () => {
     console.log("Window inner height (on resize):", window.innerHeight);
 });
 
-// Touch event handling for mobile
+// Touch event handling for mobile (Swipe Up/Down)
 document.addEventListener("touchstart", (event) => {
     startY = event.touches[0].clientY;
 });
 
-document.addEventListener("touchmove", (event) => {
-    endY = event.touches[0].clientY;
-});
-
-document.addEventListener("touchend", () => {
+document.addEventListener("touchend", (event) => {
+    endY = event.changedTouches[0].clientY;
     let deltaY = startY - endY;
 
-    if (Math.abs(deltaY) > 50) { // Minimum swipe distance
+    if (Math.abs(deltaY) > 50 && !isScrolling) { // Minimum swipe distance to prevent accidental triggers
         if (deltaY > 0 && currentIndex < sections.length - 1) {
-            scrollToSection(++currentIndex); // Swipe up
+            scrollToSection(++currentIndex); // Swipe up (scroll down)
         } else if (deltaY < 0 && currentIndex > 0) {
-            scrollToSection(--currentIndex); // Swipe down
+            scrollToSection(--currentIndex); // Swipe down (scroll up)
         }
     }
 });
