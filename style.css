@@ -223,6 +223,12 @@ p {
     }
 }
 
+@media (max-width: 500px) {
+    .about-img {
+        max-width: 100%;
+    }
+}
+
 
 
 
