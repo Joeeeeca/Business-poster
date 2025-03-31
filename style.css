@@ -133,7 +133,8 @@ p {
 /* Apply box-shadow to the image only */
 .about-img {
     width: 275px;
-    height: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 10px;
     object-fit: cover;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -210,6 +211,7 @@ p {
     /* Make images full width */
     .about-img {
         max-width: 90%;
+        height:auto;
     }
 
     /* Remove excessive borders on small screens */
@@ -229,6 +231,7 @@ p {
     background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/My_lessons_picture.jpg') center/cover no-repeat;
     position:relative;
     }
+
 
 
 .card {
@@ -304,7 +307,7 @@ p {
 }
 
 @media (max-width: 425px) {
-     .services-text p {
+    .services-text p {
         font-size:1rem;
     }
     .card {
@@ -320,7 +323,7 @@ p {
     }
 
     .btn-30 {
-        border-radius: 0 10px 10px 0px;
+        border-radius: 0 10px 0 10px;
     }
 
     .btn-60{
@@ -336,7 +339,7 @@ p {
 
 
 .contact {
-        background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/contact_picture.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.9)),  url('images/contact_picture.jpg') center/cover no-repeat;
     position:relative;
     padding: 60px 20px;
 }
